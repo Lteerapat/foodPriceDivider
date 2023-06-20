@@ -1,6 +1,9 @@
-import { useState } from 'react'
-import InputForm from '../InputForm/InputForm'
+import { useState } from 'react';
+
+import InputForm from '../InputForm/InputForm';
 import InputTable from '../InputTable/InputTable';
+
+import './App.scss';
 
 export default function App() {
     const [inputItems, setInputItems] = useState<FoodItem[]>([]);
@@ -50,49 +53,57 @@ export default function App() {
     }
 
     return (
-        <div>
-            <div style={{display:'flex'}}>
-                <div>
-                    <label>VAT Percentage:</label>
-                    <input
-                        type="number"
-                        value={vat}
-                        onChange={(event) => setVat(+event.target.value)}
-                    />
+        <div className='container'>
+            <div className='input-container'>
+                <div className='top-input-container'>
+                    <div className='vat-dis-sc-container'>
+                        <div>
+                            <label>VAT %:</label>
+                            <input
+                                type="number"
+                                value={vat}
+                                onChange={(event) => setVat(+event.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Discount %:</label>
+                            <input
+                                type="number"
+                                value={discount}
+                                onChange={(event) => setDiscount(+event.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Service Charge %:</label>
+                            <input
+                                type="number"
+                                value={serviceCharge}
+                                onChange={(event) => setServiceCharge(+event.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className='total-price-container'>
+                        <div>
+                            <label>Total Original Price:</label>
+                            <span>{calculateTotalOriginalPrice()}</span>
+                        </div>
+                        <div>
+                            <label>Total Original Price with Discount:</label>
+                            <span>{calculateTotalOriginalPriceWithDiscount()}</span>
+                        </div>
+                        <div>
+                            <label>Total Net Price:</label>
+                            <span>{calculateTotalNetPrice()}</span>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label>Discount Percentage:</label>
-                    <input
-                        type="number"
-                        value={discount}
-                        onChange={(event) => setDiscount(+event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>Service Charge:</label>
-                    <input
-                        type="number"
-                        value={serviceCharge}
-                        onChange={(event) => setServiceCharge(+event.target.value)}
-                    />
-                </div>
+                <InputForm handleAddItem={handleAddItem}/>
+                <InputTable items={inputItems} handleRemoveItem={handleRemoveItem}/>
             </div>
-            <div style={{display:'flex'}}>
-                <div>
-                    <label>Total Original Price:</label>
-                    <span>{calculateTotalOriginalPrice()}</span>
-                </div>
-                <div>
-                    <label>Total Original Price with Discount:</label>
-                    <span>{calculateTotalOriginalPriceWithDiscount()}</span>
-                </div>
-                <div>
-                    <label>Total Net Price:</label>
-                    <span>{calculateTotalNetPrice()}</span>
-                </div>
+
+            <div className="summary-container">
+
             </div>
-            <InputForm handleAddItem={handleAddItem}/>
-            <InputTable items={inputItems} handleRemoveItem={handleRemoveItem}/>
         </div>
     )
 }

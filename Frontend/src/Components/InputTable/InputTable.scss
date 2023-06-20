@@ -1,0 +1,33 @@
+@import '../../styles/color.scss';
+
+.input-table {
+    width: 100%;
+    margin-top: 10px;
+    
+    table, th, td {
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+    
+    th {
+        background: $primary-color-dark;
+    }
+    
+    td {
+        background: $background-color;
+    }
+    
+    tr:hover td{
+        background: $primary-color-light;
+    }
+
+    button {
+        border: none;
+        cursor: pointer;
+    }
+}
+

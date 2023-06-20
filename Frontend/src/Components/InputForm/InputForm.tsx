@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import './InputForm.scss';
+import Swal from "sweetalert2";
 
 
 const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
@@ -10,6 +12,11 @@ const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
+
+        if (!foodName || !unit || !originalPrice) {
+            Swal.fire('Please fill in all fields');
+            return;
+        }
 
         const newItem: FoodItem = {
             foodName,
@@ -26,7 +33,16 @@ const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
     }
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form 
+            className="input-form"
+            onSubmit={handleSubmit}
+        >
+            <input 
+                type="text" 
+                placeholder="Unit"
+                value={unit}
+                onChange={(event) => setUnit(event.target.value)}
+            />
             <input 
                 type="text" 
                 placeholder="Food Name"
@@ -35,13 +51,7 @@ const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
             />
             <input 
                 type="text" 
-                placeholder="unit"
-                value={unit}
-                onChange={(event) => setUnit(event.target.value)}
-            />
-            <input 
-                type="text" 
-                placeholder="Original Price"
+                placeholder="Price"
                 value={originalPrice}
                 onChange={(event) => setOriginalPrice(event.target.value)}
             />

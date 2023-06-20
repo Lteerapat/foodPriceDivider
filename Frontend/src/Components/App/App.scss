@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap');
+@import '../../styles/color.scss';
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    // display: grid;
+    // grid-template-columns: auto auto;
+    // width: 1400px;
+
+    .input-container {
+        width: 50%;
+
+        .top-input-container {
+            display: flex;
+        
+            .vat-dis-sc-container {
+                margin: 10px;
+                font-size: 18px;
+
+                input {
+                    width: 50px;
+                    border: none;
+                    background-color: $background-color;
+                    padding: 5px;
+                    font-size: 18px;
+                    border-radius: 10px;
+                    transition: box-shadow 0.2s;
+                    text-align: center;
+                    margin-left: 5px;
+            
+                    &:focus {
+                        outline: none;
+                        box-shadow: 0 0 0 2px $primary-color;
+                    }
+                }
+            }
+            
+            .total-price-container {
+                margin: 10px;
+                height: 100%;
+                font-size: 18px;
+
+                div {
+                    padding: 5px;
+
+                    label {
+                        margin-right: 5px;
+                    }
+
+                    span {
+                        color: $primary-color-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
