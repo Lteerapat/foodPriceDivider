@@ -6,6 +6,7 @@ const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
     const [foodName, setFoodName] = useState('');
     const [unit, setUnit] = useState('');
     const [originalPrice, setOriginalPrice] = useState('');
+    const [hasDiscount, setHasDiscount] = useState(true);
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -14,12 +15,14 @@ const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
             foodName,
             unit: +unit,
             originalPrice: +originalPrice,
+            hasDiscount,
         };
 
         handleAddItem(newItem);
         setFoodName('');
         setUnit('');
         setOriginalPrice('');
+        setHasDiscount(true);
     }
     
     return (
@@ -42,6 +45,14 @@ const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
                 value={originalPrice}
                 onChange={(event) => setOriginalPrice(event.target.value)}
             />
+            <label>
+                Has Discount:
+                <input 
+                    type="checkbox"
+                    checked={hasDiscount}
+                    onChange={(event) => setHasDiscount(event.target.checked)}
+                />
+            </label>
             <button type="submit">Add</button>
         </form>    
     );

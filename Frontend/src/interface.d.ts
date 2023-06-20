@@ -5,6 +5,7 @@ declare global {
         foodName: string ;
         unit: number;
         originalPrice: number;
+        hasDiscount: boolean;
     }
     
     //interface for inputTable
