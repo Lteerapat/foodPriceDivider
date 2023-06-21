@@ -1,10 +1,10 @@
 import { useState } from "react";
-
-import './InputForm.scss';
 import Swal from "sweetalert2";
 
+import './InputForm.scss';
 
-const InputForm: React.FC<InputFormProps> = ({handleAddItem}) => {
+
+const InputForm = ({handleAddItem}:InputFormProps) => {
     const [foodName, setFoodName] = useState('');
     const [unit, setUnit] = useState('');
     const [originalPrice, setOriginalPrice] = useState('');

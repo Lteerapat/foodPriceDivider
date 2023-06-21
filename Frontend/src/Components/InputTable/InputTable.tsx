@@ -1,7 +1,7 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './InputTable.scss';
 
-const InputTable: React.FC<TableProps> = ({items, handleRemoveItem}) => {
+const InputTable = ({items, handleRemoveItem}:TableProps) => {
     return (
         <table className="input-table">
             <thead>
